@@ -19,19 +19,19 @@ task docs
 
 task runUnitTests(type: Exec) {
   exec {
-    commandLine 'npm', 'run', 'test:dev'
+    commandLine 'npm.cmd', 'run', 'test:dev'
   }
 }
 
 task runUniTestsWithCoverage(type: Exec) {
   exec{
-    commandLine 'npm', 'run', 'testWithCoverage'
+    commandLine 'npm.cmd', 'run', 'testWithCoverage'
   }
 }
 
 task runAPITests(type: Exec) {
   exec {
-    commandLine 'npm', 'run', 'test:api'
+    commandLine 'npm.cmd', 'run', 'test:api'
   }
 }
 
