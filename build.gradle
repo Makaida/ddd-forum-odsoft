@@ -1,0 +1,38 @@
+plugins {
+id 'com.github.node-gradle.node' version "7.0.0"
+}
+
+task installNpm(type: Exec) {
+  commandLine 'npm.cmd', 'install'
+}
+
+task build(dependsOn: 'installNpm') {
+  doLast {
+    exec {
+        commandLine 'npx.cmd', 'rimraf', './dist', '&&', 'tsc'
+    }
+    println 'Build Done!'
+  }
+}
+
+task docs
+
+task runUnitTests(type: Exec) {
+  exec {
+    commandLine 'npm', 'run', 'test:dev'
+  }
+}
+
+task runUniTestsWithCoverage(type: Exec) {
+  exec{
+    commandLine 'npm', 'run', 'testWithCoverage'
+  }
+}
+
+task runAPITests(type: Exec) {
+  exec {
+    commandLine 'npm', 'run', 'test:api'
+  }
+}
+
+

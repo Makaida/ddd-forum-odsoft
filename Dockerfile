@@ -1,6 +1,6 @@
 FROM node:12.22.12
 
-WORKDIR /usr/src/ddd
+WORKDIR /usr/src/ddd~
 
 RUN echo "deb http://archive.debian.org/debian stretch main" > /etc/apt/sources.list
 
