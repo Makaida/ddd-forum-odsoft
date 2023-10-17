@@ -1,5 +1,44 @@
+// plugins {
+// id 'com.github.node-gradle.node' version "7.0.0"
+// }
+
+// task installNpm(type: Exec) {
+//   commandLine 'npm.cmd', 'install'
+// }
+
+// task build(dependsOn: 'installNpm') {
+//   doLast {
+//     exec {
+//         commandLine 'npx.cmd', 'rimraf', './dist', '&&', 'tsc'
+//     }
+//     println 'Build Done!'
+//   }
+// }
+
+// task runUnitTests(type: Exec) {
+//   exec {
+//     commandLine 'npm.cmd', 'run', 'test:dev'
+//   }
+// }
+
+// task runUniTestsWithCoverage(type: Exec) {
+//   exec{
+//     commandLine 'npm.cmd', 'run', 'testWithCoverage'
+//   }
+// }
+
+// task runAPITests(type: Exec) {
+//   exec {
+//     commandLine 'npm.cmd', 'run', 'test:api'
+//   }
+// }
+
 plugins {
-id 'com.github.node-gradle.node' version "7.0.0"
+  id "com.github.node-gradle.node" version "7.0.0"
+}
+
+task build2(type: Exec) {
+  commandLine 'npm', 'run', 'build'
 }
 
 task installNpm(type: Exec) {
@@ -15,22 +54,26 @@ task build(dependsOn: 'installNpm') {
   }
 }
 
+task docsGeneration(type: Exec) {
+  commandLine 'jsdoc', '-c', 'jsdoc.json'
+}
+
+task pumlGeneration(type: Exec) {
+  commandLine 'sh', 'bin/generate-plantuml-diagrams.sh'
+}
+
+task runAPITestsWithCoverage(type: Exec) {
+  commandLine 'npm', 'run', 'testApiWithCoverage'
+}
+
+task runApiTests(type: Exec) {
+  commandLine 'npm', 'run', 'testApi'
+}
+
 task runUnitTests(type: Exec) {
-  exec {
-    commandLine 'npm.cmd', 'run', 'test:dev'
-  }
+  commandLine 'npm', 'run', 'testUnit'
 }
 
-task runUniTestsWithCoverage(type: Exec) {
-  exec{
-    commandLine 'npm.cmd', 'run', 'testWithCoverage'
-  }
+task runUnitTestsWithCoverage(type: Exec) {
+  commandLine 'npm', 'run', 'testUnitWithCoverage'
 }
-
-task runAPITests(type: Exec) {
-  exec {
-    commandLine 'npm.cmd', 'run', 'test:api'
-  }
-}
-
-
