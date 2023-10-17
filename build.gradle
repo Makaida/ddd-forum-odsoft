@@ -15,8 +15,6 @@ task build(dependsOn: 'installNpm') {
   }
 }
 
-task docs
-
 task runUnitTests(type: Exec) {
   exec {
     commandLine 'npm.cmd', 'run', 'test:dev'
